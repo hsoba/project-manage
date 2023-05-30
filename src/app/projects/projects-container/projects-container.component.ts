@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MOCK_PROJECTS } from '../shared/mock-projects';
+import { Project } from '../shared/project.model';
 
 @Component({
   selector: 'app-projects-container',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./projects-container.component.css']
 })
 export class ProjectsContainerComponent {
+  projects: Project[] = MOCK_PROJECTS;
 
 }
