@@ -9,4 +9,10 @@ import { Project } from '../shared/project.model';
 export class ProjectListComponent {
   @Input()
   projects: Project[] = [];
+  editingProject: Project | null = null;
+
+  onEdit(event: any) {
+    this.editingProject = event.editingProject;
+    console.log(this.editingProject);
+  }
 }

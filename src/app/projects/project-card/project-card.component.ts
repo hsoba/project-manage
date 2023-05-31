@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from '../shared/project.model';
 
 @Component({
@@ -9,9 +9,11 @@ import { Project } from '../shared/project.model';
 export class ProjectCardComponent {
   @Input()
   project!: Project;
+  @Output()
+  edit = new EventEmitter<any>();
 
   onEditClick(project: Project, event: Event) {
     event.preventDefault();
-    console.log(project);
+    this.edit.emit({ editingProject: project });
   }
 }
