@@ -9,4 +9,9 @@ import { Project } from '../shared/project.model';
 export class ProjectCardComponent {
   @Input()
   project!: Project;
+
+  onEditClick(project: Project, event: Event) {
+    event.preventDefault();
+    console.log(project);
+  }
 }
