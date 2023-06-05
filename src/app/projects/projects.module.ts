@@ -6,6 +6,8 @@ import { ProjectsContainerComponent } from './projects-container/projects-contai
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ValidationErrorsComponent } from '../shared/validation-errors/validation-errors.component';
 
 
 @NgModule({
@@ -13,11 +15,13 @@ import { ProjectFormComponent } from './project-form/project-form.component';
     ProjectsContainerComponent,
     ProjectListComponent,
     ProjectCardComponent,
-    ProjectFormComponent
+    ProjectFormComponent,
+    ValidationErrorsComponent
   ],
   imports: [
     CommonModule,
-    ProjectsRoutingModule
+    ProjectsRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     ProjectsContainerComponent,

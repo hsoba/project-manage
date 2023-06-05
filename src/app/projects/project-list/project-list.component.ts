@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from '../shared/project.model';
 
 @Component({
@@ -11,8 +11,20 @@ export class ProjectListComponent {
   projects: Project[] = [];
   editingProject: Project | null = null;
 
+  @Output()
+  saveListItem = new EventEmitter<any>();
+
+  onCancel() {
+    this.editingProject = null;
+  }
+
   onEdit(event: any) {
     this.editingProject = event.editingProject;
     console.log(this.editingProject);
+  }
+
+  onSave(event: any) {
+    this.editingProject = null;
+    this.saveListItem.emit({ item: event.project });
   }
 }

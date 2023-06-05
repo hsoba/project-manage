@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { Project } from '../shared/project.model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-project-form',
@@ -6,5 +8,41 @@ import { Component } from '@angular/core';
   styleUrls: ['./project-form.component.css']
 })
 export class ProjectFormComponent {
+  @Input()
+  project!: Project;
 
+  @Output()
+  save = new EventEmitter<any>();
+
+  @Output()
+  cancel = new EventEmitter<void>();
+  projectForm: FormGroup = new FormGroup({});
+
+  constructor() {}
+  ngOnInit() {
+    this.projectForm = new FormGroup({
+      name: new FormControl(this.project.name, [Validators.required, Validators.minLength(3)]),
+      description: new FormControl(this.project.description),
+      budget: new FormControl(this.project.budget),
+      isActive: new FormControl(this.project.isActive)
+  });
+  }
+
+  onSubmit() {
+    if (this.projectForm.invalid) {
+      return;
+    }
+
+    const updatedProject = Object.assign(
+                            {},
+                            this.project,
+                            this.projectForm.value);
+
+    this.save.emit({project: updatedProject });
+  }
+
+  onCancelClick(event: Event) {
+    event.preventDefault();
+    this.cancel.emit();
+  }
 }
