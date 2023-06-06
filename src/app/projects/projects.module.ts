@@ -8,7 +8,9 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorsComponent } from '../shared/validation-errors/validation-errors.component';
-
+import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { ProjectDetailContainerComponent } from './project-detail-container/project-detail-container.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,15 @@ import { ValidationErrorsComponent } from '../shared/validation-errors/validatio
     ProjectListComponent,
     ProjectCardComponent,
     ProjectFormComponent,
-    ValidationErrorsComponent
+    ValidationErrorsComponent,
+    ProjectDetailComponent,
+    ProjectDetailContainerComponent
   ],
   imports: [
     CommonModule,
     ProjectsRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   exports: [
     ProjectsContainerComponent,
